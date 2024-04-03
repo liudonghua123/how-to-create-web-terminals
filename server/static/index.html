@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How to create web terminals</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.4.0/xterm.css" />
+  </head>
+
+  <body>
+    <div id="terminal-container"></div>
+    <!-- 
+      # DO NOT SUPPORT ESM/MODULE
+      // "xterm": "https://cdnjs.cloudflare.com/ajax/libs/xterm/5.4.0/xterm.js" 
+      # WEBSOCKET AUTO DISCONNECT
+      // "xterm": "https://unpkg.com/@altronix/xterm@4.11.0-es6.5/xterm.js"
+      see also https://github.com/xtermjs/xterm.js/issues/2878
+
+      // https://unpkg.com/socket.io-client@4.7.5/build/esm/index.js
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "socket.io-client": "https://unpkg.com/socket.io@4.7.5/client-dist/socket.io.esm.min.js",
+          "@liudonghua123/xterm": "https://unpkg.com/@liudonghua123/xterm@5.4.0-release/lib/xterm-esm.js"
+        }
+      }
+    </script>
+    <script src="src/index.js" type="module"></script>
+  </body>
+</html>

@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const SocketService = require("./SocketService");
 
+// see also https://stackabuse.com/node-http-servers-for-static-file-serving/
 const staticBasePath = './static';
 
 const staticServe = function(req, res) {
@@ -16,12 +17,17 @@ const staticServe = function(req, res) {
     }
 
     fs.readFile(fileLoc, function(err, data) {
+        const mimeTypes = {
+          'html': 'text/html',
+          'js': 'application/javascript',
+          'css': 'text/css',
+        }
         if (err) {
             res.writeHead(404, 'Not Found');
             res.write('404: File Not Found!');
             return res.end();
         }
-        res.statusCode = 200;
+        res.writeHead(200, {'Content-Type': mimeTypes[fileLoc.substring(fileLoc.lastIndexOf('.') + 1)] || 'text/plain'});
         res.write(data);
         return res.end();
     });

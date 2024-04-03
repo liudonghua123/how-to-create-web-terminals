@@ -27,6 +27,9 @@ class SocketService {
       this.socket.on("disconnect", () => {
         console.log("Disconnected Socket: ", socket.id);
       });
+      this.socket.on("connect_error", (err) => {
+        console.log(`connect_error due to ${err.message}`);
+      });
 
       // Create a new pty service when client connects.
       this.pty = new PTYService(this.socket);
