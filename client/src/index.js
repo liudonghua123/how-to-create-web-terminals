@@ -1,6 +1,6 @@
 // index.js
 
-import { TerminalUI } from "./TerminalUI";
+import { TerminalUI } from "./TerminalUI.js";
 import io from "socket.io-client";
 
 // IMPORTANT: Make sure you replace this address with your server address.

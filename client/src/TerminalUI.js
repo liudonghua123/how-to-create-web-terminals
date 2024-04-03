@@ -1,6 +1,9 @@
 // TerminalUI.js
 
 import { Terminal } from "xterm";
+
+// import the xterm.css if use bundlers or insert link element in the head
+// <link rel="stylesheet" href="https://unpkg.com/xterm@5.4.0-release/css/xterm.css" />
 import "xterm/css/xterm.css";
 
 export class TerminalUI {
@@ -8,10 +11,15 @@ export class TerminalUI {
     this.terminal = new Terminal();
 
     /* You can make your terminals colorful :) */
-    this.terminal.setOption("theme", {
+    // https://github.com/xtermjs/xterm.js/issues/4256#issuecomment-1510977408
+    // this.terminal.setOption("theme", {
+    //   background: "#202B33",
+    //   foreground: "#F5F8FA"
+    // });
+    this.terminal.options.theme = {
       background: "#202B33",
       foreground: "#F5F8FA"
-    });
+    };
 
     this.socket = socket;
   }
